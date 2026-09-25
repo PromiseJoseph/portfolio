@@ -1,0 +1,8 @@
+[package]
+name = "portfolio"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+http-mambo = {git = "https://github.com/PromiseJoseph/http-mambo"}
+tokio = {version = "1.52.3", features = ["full"]}
