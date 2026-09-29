@@ -1,5 +1,5 @@
 use http_mambo::types::{HttpRequest, HttpResponse, StatusCode};
-use std::{collections::HashMap, format, println};
+use std::collections::HashMap;
 /**
  *  A test handler for the home route.
  *  Handle an HTTP request and return an HTTP response.
@@ -34,7 +34,9 @@ pub async fn homepage(_request: HttpRequest) -> HttpResponse {
     let mut headers = HashMap::new();
     headers.insert("Content-Type".to_string(), "text/html".to_string());
     // headers.insert("Server".to_string(), "HTTP Mambo".to_string());
-    HttpResponse::new().with_body(body).with_headers(headers)
+    HttpResponse::new()
+        .with_body(body.into_bytes())
+        .with_headers(headers)
 }
 
 pub async fn styles(request: HttpRequest) -> HttpResponse {
@@ -44,7 +46,7 @@ pub async fn styles(request: HttpRequest) -> HttpResponse {
         "/app.css" => format!("{DIR}/static/css/app.css"),
         _ => {
             return HttpResponse::with_status(StatusCode::OK)
-                .with_body("CSS not found".to_string());
+                .with_body("CSS not found".as_bytes().to_vec());
         }
     };
     let css = match std::fs::read_to_string(css_path) {
@@ -56,7 +58,7 @@ pub async fn styles(request: HttpRequest) -> HttpResponse {
 
     HttpResponse::new()
         .with_headers(headers)
-        .with_body(css.to_string())
+        .with_body(css.into_bytes())
 }
 
 pub async fn config(_request: HttpRequest) -> HttpResponse {
@@ -66,7 +68,7 @@ pub async fn config(_request: HttpRequest) -> HttpResponse {
 
     HttpResponse::new()
         .with_headers(headers)
-        .with_body(config.to_string())
+        .with_body(config.as_bytes().to_vec())
 }
 
 pub async fn scripts(request: HttpRequest) -> HttpResponse {
@@ -75,7 +77,7 @@ pub async fn scripts(request: HttpRequest) -> HttpResponse {
         "/app.js" => format!("{DIR}/static/js/app.js",),
         _ => {
             return HttpResponse::with_status(StatusCode::OK)
-                .with_body("Script not found".to_string());
+                .with_body("Script not found".as_bytes().to_vec());
         }
     };
     let script = match std::fs::read_to_string(script_path) {
@@ -91,7 +93,7 @@ pub async fn scripts(request: HttpRequest) -> HttpResponse {
 
     HttpResponse::new()
         .with_headers(headers)
-        .with_body(script.to_string())
+        .with_body(script.into_bytes())
 }
 
 pub async fn images(request: HttpRequest) -> HttpResponse {
@@ -104,7 +106,7 @@ pub async fn images(request: HttpRequest) -> HttpResponse {
         "images/portfolio3.png" => format!("{DIR}/static/img/portfolio3.png"),
         _ => {
             return HttpResponse::with_status(StatusCode::NOT_FOUND)
-                .with_body("Image not found".to_string());
+                .with_body("Image not found".as_bytes().to_vec());
         }
     };
 
