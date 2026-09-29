@@ -1,6 +1,6 @@
 mod handler;
-use handler::homepage;
-use handler::styles;
+use handler::{config, homepage, images, scripts, styles};
+
 use http_mambo::types::{Client, Router};
 use http_mambo::{listener, stream};
 use std::sync::Arc;
@@ -25,6 +25,13 @@ async fn main() {
 
     router.get("/", homepage);
     router.get("/index.css", styles);
+    router.get("/app.css", styles);
+    router.get("/particlejs-config.json", config);
+    router.get("/app.js", scripts);
+    router.get("/images/Holoshop.png", images);
+    router.get("/images/portfolio.png", images);
+    router.get("/images/portfolio2.png", images);
+    router.get("/images/portfolio3.png", images);
 
     let router = Arc::new(router);
 

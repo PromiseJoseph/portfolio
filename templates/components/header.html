@@ -2,8 +2,8 @@
   class="sticky top-0 z-30 bg-white/2 backdrop-blur-[2px] px-8 py-6 lg:mt-2 flex items-center justify-between md:rounded-xl lg:rounded-full mb-8 border border-white/10"
 >
   <div
-    class="text-3xl font-bold font-mono cursor-pointer hover:text-gray-300 transition-colors"
-    onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    id="top"
+    class="op-button text-3xl font-bold font-mono cursor-pointer hover:text-gray-300 transition-colors"
   >
     OP
   </div>
@@ -12,8 +12,7 @@
     <ul class="flex items-center space-x-8">
       <li>
         <button
-          onclick="scrollToSection('projects')"
-          class="text-gray-300 hover:text-white transition-colors cursor-pointer"
+          class="projects-button text-gray-300 hover:text-white transition-colors cursor-pointer"
         >
           Projects
         </button>
@@ -21,8 +20,7 @@
 
       <li>
         <button
-          onclick="scrollToSection('footer')"
-          class="text-gray-300 hover:text-white transition-colors cursor-pointer"
+          class="contact-button text-gray-300 hover:text-white transition-colors cursor-pointer"
         >
           Contact
         </button>
