@@ -100,10 +100,10 @@ pub async fn images(request: HttpRequest) -> HttpResponse {
     let path = request.request_lines.path;
 
     let image_path = match path.as_str() {
-        "images/Holoshop.png" => format!("{DIR}/static/img/Holoshop.png"),
-        "images/portfolio.png" => format!("{DIR}/static/img/portfolio.png"),
-        "images/portfolio2.png" => format!("{DIR}/static/img/portfolio2.png"),
-        "images/portfolio3.png" => format!("{DIR}/static/img/portfolio3.png"),
+        "/images/Holoshop.png" => format!("{DIR}/static/img/Holoshop.png"),
+        "/images/Linkify.png" => format!("{DIR}/static/img/Linkify.png"),
+        "/images/Swiftze.png" => format!("{DIR}/static/img/Swiftze.png"),
+        "/images/Wigo.png" => format!("{DIR}/static/img/Wigo.png"),
         _ => {
             return HttpResponse::with_status(StatusCode::NOT_FOUND)
                 .with_body("Image not found".as_bytes().to_vec());

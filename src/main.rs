@@ -29,9 +29,9 @@ async fn main() {
     router.get("/particlejs-config.json", config);
     router.get("/app.js", scripts);
     router.get("/images/Holoshop.png", images);
-    router.get("/images/portfolio.png", images);
-    router.get("/images/portfolio2.png", images);
-    router.get("/images/portfolio3.png", images);
+    router.get("/images/Linkify.png", images);
+    router.get("/images/Swiftze.png", images);
+    router.get("/images/Wigo.png", images);
 
     let router = Arc::new(router);
 
