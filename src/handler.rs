@@ -34,9 +34,7 @@ pub async fn homepage(_request: HttpRequest) -> HttpResponse {
     let mut headers = HashMap::new();
     headers.insert("Content-Type".to_string(), "text/html".to_string());
     // headers.insert("Server".to_string(), "HTTP Mambo".to_string());
-    HttpResponse::new()
-        .with_body(body.into_bytes())
-        .with_headers(headers)
+    HttpResponse::new().with_body(body).with_headers(headers)
 }
 
 pub async fn styles(request: HttpRequest) -> HttpResponse {
@@ -46,7 +44,7 @@ pub async fn styles(request: HttpRequest) -> HttpResponse {
         "/app.css" => format!("{DIR}/static/css/app.css"),
         _ => {
             return HttpResponse::with_status(StatusCode::OK)
-                .with_body("CSS not found".as_bytes().to_vec());
+                .with_body("CSS not found".to_string());
         }
     };
     let css = match std::fs::read_to_string(css_path) {
@@ -56,9 +54,7 @@ pub async fn styles(request: HttpRequest) -> HttpResponse {
     let mut headers = HashMap::new();
     headers.insert("Content-Type".to_string(), "text/css".to_string());
 
-    HttpResponse::new()
-        .with_headers(headers)
-        .with_body(css.into_bytes())
+    HttpResponse::new().with_headers(headers).with_body(css)
 }
 
 pub async fn config(_request: HttpRequest) -> HttpResponse {
@@ -68,7 +64,7 @@ pub async fn config(_request: HttpRequest) -> HttpResponse {
 
     HttpResponse::new()
         .with_headers(headers)
-        .with_body(config.as_bytes().to_vec())
+        .with_body(config.to_string())
 }
 
 pub async fn scripts(request: HttpRequest) -> HttpResponse {
@@ -77,7 +73,7 @@ pub async fn scripts(request: HttpRequest) -> HttpResponse {
         "/app.js" => format!("{DIR}/static/js/app.js",),
         _ => {
             return HttpResponse::with_status(StatusCode::OK)
-                .with_body("Script not found".as_bytes().to_vec());
+                .with_body("Script not found".to_string());
         }
     };
     let script = match std::fs::read_to_string(script_path) {
@@ -93,7 +89,7 @@ pub async fn scripts(request: HttpRequest) -> HttpResponse {
 
     HttpResponse::new()
         .with_headers(headers)
-        .with_body(script.into_bytes())
+        .with_body(script.to_string())
 }
 
 pub async fn images(request: HttpRequest) -> HttpResponse {
@@ -106,7 +102,7 @@ pub async fn images(request: HttpRequest) -> HttpResponse {
         "/images/Wigo.png" => format!("{DIR}/static/img/Wigo.png"),
         _ => {
             return HttpResponse::with_status(StatusCode::NOT_FOUND)
-                .with_body("Image not found".as_bytes().to_vec());
+                .with_body("Image not found".to_string());
         }
     };
 
@@ -116,5 +112,5 @@ pub async fn images(request: HttpRequest) -> HttpResponse {
 
     HttpResponse::new()
         .with_headers(headers)
-        .with_body(image_data)
+        .with_body_bytes(image_data)
 }

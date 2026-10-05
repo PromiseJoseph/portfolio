@@ -50,7 +50,6 @@ async fn main() {
             if let Err(e) = stream::handle_stream(reader, writer, client, router).await {
                 eprintln!("Error handling stream: {}", e);
             }
-            //or let _ = stream::handle_stream(reader, writer, client, router).await; if you wish to ignre the err..
         });
     }
 }
