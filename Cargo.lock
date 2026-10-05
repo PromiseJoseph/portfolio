@@ -33,7 +33,7 @@ dependencies = [
 [[package]]
 name = "http-mambo"
 version = "0.1.0"
-source = "git+https://github.com/PromiseJoseph/http-mambo#5b29982cf316c4ba4e12e7dcf306e569a2a968f7"
+source = "git+https://github.com/PromiseJoseph/http-mambo#646ce6a8453678eec2b149da5c4fd8cfad5ce9d8"
 dependencies = [
  "tokio",
 ]
