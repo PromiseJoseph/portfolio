@@ -100,6 +100,10 @@ pub async fn images(request: HttpRequest) -> HttpResponse {
         "/images/Linkify.png" => format!("{DIR}/static/img/Linkify.png"),
         "/images/Swiftze.png" => format!("{DIR}/static/img/Swiftze.png"),
         "/images/Wigo.png" => format!("{DIR}/static/img/Wigo.png"),
+        "/images/EchoMambo.png" => format!("{DIR}/static/img/EchoMambo.png"),
+        "/images/HttpMambo.png" => format!("{DIR}/static/img/HttpMambo.png"),
+        "/images/ChatMambo.png" => format!("{DIR}/static/img/ChatMambo.png"),
+        "/images/Portfolio.png" => format!("{DIR}/static/img/Portfolio.png"),
         _ => {
             return HttpResponse::with_status(StatusCode::NOT_FOUND)
                 .with_body("Image not found".to_string());

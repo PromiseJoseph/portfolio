@@ -32,6 +32,10 @@ async fn main() {
     router.get("/images/Linkify.png", images);
     router.get("/images/Swiftze.png", images);
     router.get("/images/Wigo.png", images);
+    router.get("/images/EchoMambo.png", images);
+    router.get("/images/HttpMambo.png", images);
+    router.get("/images/ChatMambo.png", images);
+    router.get("/images/Portfolio.png", images);
 
     let router = Arc::new(router);
 
